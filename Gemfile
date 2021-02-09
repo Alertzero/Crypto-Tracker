@@ -63,3 +63,4 @@ end
 gem "devise"
 gem 'devise-bootstrap-views', '~> 0.0.7'
 gem 'iex-ruby-client'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'

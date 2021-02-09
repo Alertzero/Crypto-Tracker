@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_122754) do
+ActiveRecord::Schema.define(version: 2021_02_09_132512) do
 
-  create_table "stocks", force: :cascade do |t|
+  create_table "cryptos", force: :cascade do |t|
     t.string "ticker"
     t.string "name"
     t.decimal "last_price"

@@ -1,0 +1,24 @@
+<h1>My Portfolio</h1>
+<div class="pt-5">
+  <p>Search Cryptocurrency</p>
+  <%= form_tag search_crypto_path, method: :get do%>
+    <div class="form-group row">
+      <div class="col-sm-9 p-0">
+        <%= text_field_tag :crypto, params[:crypto], placeholder: "Cryptocurrency Symbol", autofocus: true, class: "form-control form-control-lg shadow-none rounded-0 ml-2"%>
+      </div>
+      <div class="col-sm-3 p-0">
+        <%= button_tag type: :submit, class: "btn btn-success rounded-0" do%>
+          <%= fa_icon 'search 2x'%>
+        <%end%>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%if @crypto%>
+<div class="card card-header d-inline-block">
+  <strong>Symbol: <%= @crypto.ticker%></strong>
+  <strong>Name: <%= @crypto.name%></strong>
+  <strong>Price: <%= @crypto.last_price%></strong>
+</div>
+<% end %>

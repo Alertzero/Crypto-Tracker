@@ -1,6 +1,6 @@
-class CreateStocks < ActiveRecord::Migration[6.1]
+class CreateCryptos < ActiveRecord::Migration[6.1]
   def change
-    create_table :stocks do |t|
+    create_table :cryptos do |t|
       t.string :ticker
       t.string :name
       t.decimal :last_price
