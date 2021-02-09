@@ -1,0 +1,7 @@
+<%if @crypto%>
+<div class="card card-header d-inline-block">
+  <strong>Symbol: <%= @crypto.ticker%></strong>
+  <strong>Name: <%= @crypto.name%></strong>
+  <strong>Price: <%= @crypto.last_price%></strong>
+</div>
+<% end %>

@@ -1,7 +1,7 @@
 <h1>My Portfolio</h1>
 <div class="pt-5">
   <p>Search Cryptocurrency</p>
-  <%= form_tag search_crypto_path, method: :get do%>
+  <%= form_tag search_crypto_path, remote: true, method: :get do%>
     <div class="form-group row">
       <div class="col-sm-9 p-0">
         <%= text_field_tag :crypto, params[:crypto], placeholder: "Cryptocurrency Symbol", autofocus: true, class: "form-control form-control-lg shadow-none rounded-0 ml-2"%>
@@ -15,10 +15,4 @@
   <% end %>
 </div>
 
-<%if @crypto%>
-<div class="card card-header d-inline-block">
-  <strong>Symbol: <%= @crypto.ticker%></strong>
-  <strong>Name: <%= @crypto.name%></strong>
-  <strong>Price: <%= @crypto.last_price%></strong>
-</div>
-<% end %>
+<div id="result"></div>
