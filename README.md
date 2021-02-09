@@ -1,24 +1,15 @@
-# README
+# Finance Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the finance tracker app from the Complete Ruby on Rails Developer course
 
-Things you may want to cover:
+# Learning Experience
 
-* Ruby version
+<li>Devise</li>
+<li>Omniauth</li>
+<li>Carrierwave Id</li>
 
-* System dependencies
+# Live Demo
 
-* Configuration
+coming soon
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
