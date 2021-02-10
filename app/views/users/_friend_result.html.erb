@@ -1,0 +1,32 @@
+<div class="d-inline-block">
+  <%= render "layouts/messages"%>
+</div>
+<%if @friends %>
+  <div class="card card-header d-inline-block mb-4">
+    <table class="col-md-12">
+      <tbody>
+        <% @friends.each do |friend|%>
+          <tr>
+            <td>    <strong>Email:</strong> <%= !!friend.email ? friend.email : "N/A"%> </td>
+            <td>  <strong>First Name:</strong> <%= !!friend.first_name ? friend.first_name : "N/A"%> </td>
+            <td>   <strong>Last Name:</strong> <%= !!friend.last_name ? friend.last_name : "N/A"%> </td>
+            <td>   <strong>Profile: </strong> <%= link_to "View Profile", "#", class: "btn btn-xs btn-success"%>
+            <% if current_user.not_friend_with?(friend.id) %>
+              <%= link_to "Add friend", "#", class: "btn btn-xs btn-success", method: :post%> 
+              
+<% else %>
+
+<span class="badge badge-secondary">
+Already added friend
+</span>
+               <% end %>
+
+
+              </td>
+
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<% end %>

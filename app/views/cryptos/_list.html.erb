@@ -1,0 +1,26 @@
+<% if !@tracked_crypto.empty? %>
+<div class="row">
+  <div class="col-9">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Ticker</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @tracked_crypto.each do |crypto|%>
+        <tr>
+          <th scope="row"><%= crypto.ticker%></th>
+          <td><%= !!crypto.name ? crypto.name : "N/A"%></td>
+          <td><%= !!crypto.last_price ? crypto.last_price : "N/A"%></td>
+          <td><%= link_to "Remove", user_crypto_path(crypto), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-warning"%></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<% end %>

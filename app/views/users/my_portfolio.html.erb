@@ -14,5 +14,10 @@
     </div>
   <% end %>
 </div>
-
 <div id="result"></div>
+
+<% if !@tracked_crypto.empty?%>
+<%= render "cryptos/list"%>
+<% else %>
+<p>You have nothing in your portfolio!</p>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_132512) do
+ActiveRecord::Schema.define(version: 2021_02_10_114712) do
 
   create_table "cryptos", force: :cascade do |t|
     t.string "ticker"
@@ -18,6 +18,24 @@ ActiveRecord::Schema.define(version: 2021_02_09_132512) do
     t.decimal "last_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "friend_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
+  create_table "user_cryptos", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "crypto_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["crypto_id"], name: "index_user_cryptos_on_crypto_id"
+    t.index ["user_id"], name: "index_user_cryptos_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -28,8 +46,14 @@ ActiveRecord::Schema.define(version: 2021_02_09_132512) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "friendships", "users"
+  add_foreign_key "friendships", "users", column: "friend_id"
+  add_foreign_key "user_cryptos", "cryptos"
+  add_foreign_key "user_cryptos", "users"
 end

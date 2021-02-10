@@ -4,15 +4,19 @@ class CryptosController < ApplicationController
       @crypto = Crypto.new_lookup(params[:crypto])
       if @crypto
         respond_to do |format|
-        format.js { render partial: 'users/result'}
+          format.js { render partial: 'users/result' }
         end
       else
-        flash[:alert] = 'Please enter a valid symbol to search'
-        render 'users/my_portfolio'
+        respond_to do |format|
+          flash.now[:alert] = 'Please enter a valid symbol to search'
+          format.js { render partial: 'users/result' }
+        end
       end
     else
-      flash[:alert] = 'Please enter the symbol to search'
-      redirect_to my_portfolio_path
+      respond_to do |format|
+        flash.now[:alert] = 'Please enter the symbol to search'
+        format.js { render partial: 'users/result' }
+      end
     end
   end
 end

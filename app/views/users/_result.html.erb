@@ -1,7 +1,22 @@
-<%if @crypto%>
-<div class="card card-header d-inline-block">
-  <strong>Symbol: <%= @crypto.ticker%></strong>
-  <strong>Name: <%= @crypto.name%></strong>
-  <strong>Price: <%= @crypto.last_price%></strong>
+<div class="d-inline-block">
+  <%= render "layouts/messages"%>
 </div>
+<%if @crypto%>
+  <div class="card card-header d-inline-block mb-4">
+    <strong>Symbol: </strong><%= !!@crypto.ticker ? @crypto.ticker : "N/A"%>
+    <strong>Name: </strong><%= !!@crypto.name ? @crypto.name : "N/A"%>
+    <strong>Price: </strong><%= !!@crypto.last_price ? @crypto.last_price : "N/A"%>
+    <%if current_user.can_track?(@crypto.ticker)%>
+      <%= link_to "Add to my portfolio", user_cryptos_path(user: current_user, ticker: @crypto.ticker), class: "btn btn-xs btn-success", method: :post%>
+    <%else%>
+      <span class="badge badge-secondary">
+        Already tracked
+        <% if !current_user.under_limit? %>
+        to limit 
+        <% else %>
+        this crypto
+        <% end %>
+      </span>
+    <% end %>
+  </div>
 <% end %>
