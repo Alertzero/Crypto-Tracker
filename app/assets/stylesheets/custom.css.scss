@@ -1,9 +1,12 @@
 @import "bootstrap/dist/css/bootstrap";
 
 
-/*
-.navbar-brand {
-    font-size: 3rem;
-}'
-
-*/
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+ }
