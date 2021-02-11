@@ -4,10 +4,10 @@ This is the finance tracker app from the Complete Ruby on Rails Developer course
 
 # Learning Experience
 
-<li>Devise</li>
+<li>Self-referential association</li>
 
 # Live Demo
 
-coming soon
+https://damp-fjord-08353.herokuapp.com/
 
 
