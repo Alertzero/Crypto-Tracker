@@ -16,7 +16,27 @@
           <th scope="row"><%= crypto.ticker%></th>
           <td><%= !!crypto.name ? crypto.name : "N/A"%></td>
           <td><%= !!crypto.last_price ? crypto.last_price : "N/A"%></td>
-          <td><%= link_to "Remove", user_crypto_path(crypto), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-warning"%></td>
+          
+          <td>
+
+ <%if current_user.can_track?(crypto.ticker)%>
+      <%= link_to "Add to my portfolio", user_cryptos_path(user: current_user, ticker: crypto.ticker), class: "btn btn-xs btn-success", method: :post%>
+    <%elsif current_user.id != @user.id%>
+      <span class="badge badge-secondary">
+        Already tracked
+        <% if !current_user.under_limit? %>
+        to limit 
+        <% else %>
+        this crypto
+        <% end %>
+      </span>
+    <% end %>
+
+          <% if current_user.id == @user.id %>
+          <%= link_to "Remove", user_crypto_path(crypto), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-warning"%>
+          <% end %>
+          
+          </td>
         </tr>
       <% end %>
       </tbody>

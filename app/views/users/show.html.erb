@@ -1,0 +1,25 @@
+<h2>User Details</h2>
+<div class="card card-header d-inline-block mb-4">
+  <table class="col-md-12">
+    <tbody>
+      <tr>
+        <td>    <strong>Email:</strong> <%= !!@user.email ? @user.email : "N/A"%> </td>
+        <td>  <strong>First Name:</strong> <%= !!@user.first_name ? @user.first_name : "N/A"%> </td>
+        <td>   <strong>Last Name:</strong> <%= !!@user.last_name ? @user.last_name : "N/A"%> </td>
+        <td>   
+          <% if current_user.not_friend_with?(@user.id) %>
+            <%= link_to "Add friend", friendships_path(friend: @user), class: "btn btn-xs btn-success", method: :post%>
+          <% else %>
+            <%= link_to "Already added friend", friendship_path(@user), method: :delete, data: {confirm: "Are you sure?"}, class: "badge badge-xs badge-secondary"%>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<% if !@tracked_crypto.empty?%>
+<%= render "cryptos/list"%>
+<% else %>
+<p> <%= @user.email %> has nothing in its portfolio!</p>
+<% end %>
